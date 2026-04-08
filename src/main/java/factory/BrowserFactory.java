@@ -27,8 +27,17 @@ public class BrowserFactory {
             case "chrome":
             default:
                 ChromeOptions chromeOptions = new ChromeOptions();
+
+                chromeOptions.addArguments("--headless=new");
+                chromeOptions.addArguments("--window-size=1920,1080");
+
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--disable-gpu");
+
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 chromeOptions.addArguments("--disable-notifications");
+
                 driver = new ChromeDriver(chromeOptions);
                 break;
         }
