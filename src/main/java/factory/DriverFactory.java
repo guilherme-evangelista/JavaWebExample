@@ -1,5 +1,6 @@
 package factory;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import java.time.Duration;
 
@@ -17,7 +18,7 @@ public class DriverFactory {
     public static void initDriver(String browser) {
         if (getDriver() == null) {
             driver.set(BrowserFactory.createInstance(browser));
-            getDriver().manage().window().maximize();
+            getDriver().manage().window().setSize(new Dimension(1920, 1080));
             getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         }

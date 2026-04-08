@@ -2,7 +2,6 @@ package pages;
 
 import factory.DriverFactory;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -34,6 +33,11 @@ public class BasePage {
     public void acessarPagina(String url) {
         getDriver().manage().deleteAllCookies();
         getDriver().get(url);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void clickElement(WebElement element) {
@@ -200,6 +204,21 @@ public class BasePage {
         getWait(DEFAULT_TIMEOUT).until(d -> {
             List<WebElement> elements = getWait(DEFAULT_TIMEOUT).until(ExpectedConditions.visibilityOfAllElements(element));
             Assert.assertEquals(elements.size(), expectedQuantity, "Quantidade de elementos incorreta.");
+            return true;
+        });
+    }
+
+    public void validateTextOnScreen(String expectedText) {
+        getWait(DEFAULT_TIMEOUT).until(d -> {
+            WebElement element = getDriver().findElement(By.xpath("//*[contains(text(), '" + expectedText + "')]"));
+            Assert.assertTrue(element.isDisplayed(), "O texto '" + expectedText + "' não está visível na tela.");
+            return true;
+        });
+    }
+
+    public void validateElementIsNotChecked(WebElement element) {
+        getWait(DEFAULT_TIMEOUT).until(d -> {
+            Assert.assertFalse(element.isSelected(), "O elemento deveria estar desmarcado (unchecked).");
             return true;
         });
     }
