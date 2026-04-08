@@ -14,8 +14,6 @@ public class ElementosBasicosPage extends BasePage {
         PageFactory.initElements(DriverFactory.getDriver(), this);
     }
 
-    // --- MAPEAMENTO DE ELEMENTOS (@FindBy) ---
-
     @FindBy(xpath = "//button[contains(text(), 'Clique aqui')]")
     private WebElement btnCliqueAqui;
 
@@ -66,8 +64,6 @@ public class ElementosBasicosPage extends BasePage {
     public void clicarInterruptor() {
         clickElement(switchInterruptor);
     }
-
-    // --- VALIDAÇÕES (Delega para a BasePage) ---
 
     public void validarQuantidadeCliquesSimples(String quantidade) {
         validateText(btnCliqueAqui, quantidade);

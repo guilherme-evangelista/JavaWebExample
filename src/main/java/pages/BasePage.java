@@ -98,13 +98,19 @@ public class BasePage {
         });
     }
 
-public void setSliderValue(WebElement element, String value) {
+    public void setSliderValue(WebElement element, String value) {
         getWait(DEFAULT_TIMEOUT).until(d -> {
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
             js.executeScript(
-                "arguments[0].value = arguments[1];" +
-                "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
-                "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", 
+                "var input = arguments[0];" +
+                "var val = arguments[1];" +
+                "var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;" +
+                "if (nativeInputValueSetter) {" +
+                "    nativeInputValueSetter.call(input, val);" +
+                "}" +
+                "input.value = val;" +
+                "input.dispatchEvent(new Event('input', { bubbles: true }));" +
+                "input.dispatchEvent(new Event('change', { bubbles: true }));", 
                 element, value);
             return true;
         });
@@ -148,7 +154,7 @@ public void setSliderValue(WebElement element, String value) {
 
     public void validateValue(WebElement element, String expectedValue) {
         getWait(DEFAULT_TIMEOUT).until(d -> {
-            Assert.assertEquals(element.getAttribute("value"), expectedValue, "Valor do elemento incorreto.");
+            Assert.assertEquals(element.getDomProperty("value"), expectedValue, "Valor do elemento incorreto.");
             return true;
         });
     }
