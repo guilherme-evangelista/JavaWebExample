@@ -98,10 +98,14 @@ public class BasePage {
         });
     }
 
-    public void setSliderValue(WebElement element, String value) {
+public void setSliderValue(WebElement element, String value) {
         getWait(DEFAULT_TIMEOUT).until(d -> {
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
-            js.executeScript("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));", element, value);
+            js.executeScript(
+                "arguments[0].value = arguments[1];" +
+                "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
+                "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", 
+                element, value);
             return true;
         });
     }
