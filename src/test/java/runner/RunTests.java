@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@formularios",
+        tags = "@regressivo",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-html.html",
