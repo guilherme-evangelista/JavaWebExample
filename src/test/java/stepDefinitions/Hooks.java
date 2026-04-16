@@ -6,12 +6,14 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import utils.report.screenshot.ScenarioRepository;
 
 public class Hooks {
 
     @Before
     public void setUp(Scenario scenario) {
         DriverFactory.initDriver("chrome");
+        ScenarioRepository.add(scenario);
     }
 
     @After
@@ -21,5 +23,6 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", "Screenshot de Erro");
         }
         DriverFactory.quitDriver();
+        ScenarioRepository.remove();
     }
 }

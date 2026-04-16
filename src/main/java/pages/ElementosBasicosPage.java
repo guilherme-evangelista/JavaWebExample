@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static utils.report.screenshot.ScenarioRepository.screenShot;
+
 public class ElementosBasicosPage extends BasePage {
 
     public static final String URL = "https://playground-for-qa.vercel.app/playground";
@@ -36,57 +38,79 @@ public class ElementosBasicosPage extends BasePage {
         return By.cssSelector("button[data-testid='select-option-" + nomeFramework + "']");
     }
 
-    public void acessarPaginaInicial() {
+    public static ElementosBasicosPage actions(){
+        return new ElementosBasicosPage();
+    }
+
+    public ElementosBasicosPage takeScreenShot() {
+        screenShot();
+        return this;
+    }
+
+    public ElementosBasicosPage acessarPaginaInicial() {
         acessarPagina(URL);
+        return this;
     }
 
-    public void clicarBotaoSimples() {
+    public ElementosBasicosPage clicarBotaoSimples() {
         clickElement(btnCliqueAqui);
+        return this;
     }
 
-    public void clicarBotaoDuplo() {
+    public ElementosBasicosPage clicarBotaoDuplo() {
         doubleClickElement(btnDuploClique);
+        return this;
     }
 
-    public void preencherTexto(String texto) {
+    public ElementosBasicosPage preencherTexto(String texto) {
         typeText(inputTexto, texto);
+        return this;
     }
 
-    public void selecionarDropdown(String opcao) {
+    public ElementosBasicosPage selecionarDropdown(String opcao) {
         clickElement(dropdown);
         clickElement(getOpcaoDropdownLocator(opcao));
+        return this;
     }
 
-    public void alterarSlider(String valor) {
+    public ElementosBasicosPage alterarSlider(String valor) {
         setSliderValue(slider, valor);
+        return this;
     }
 
-    public void clicarInterruptor() {
+    public ElementosBasicosPage clicarInterruptor() {
         clickElement(switchInterruptor);
+        return this;
     }
 
-    public void validarQuantidadeCliquesSimples(String quantidade) {
+    public ElementosBasicosPage validarQuantidadeCliquesSimples(String quantidade) {
         validateText(btnCliqueAqui, quantidade);
+        return this;
     }
 
-    public void validarQuantidadeCliquesDuplo(String quantidade) {
+    public ElementosBasicosPage validarQuantidadeCliquesDuplo(String quantidade) {
         validateText(btnDuploClique, quantidade);
+        return this;
     }
 
-    public void validarValorInput(String textoEsperado) {
+    public ElementosBasicosPage validarValorInput(String textoEsperado) {
         validateValue(inputTexto, textoEsperado);
+        return this;
     }
 
-    public void validarOpcaoDropdown(String textoEsperado) {
+    public ElementosBasicosPage validarOpcaoDropdown(String textoEsperado) {
         validateText(dropdown, textoEsperado);
+        return this;
     }
 
-    public void validarValorSlider(String valorEsperado) {
+    public ElementosBasicosPage validarValorSlider(String valorEsperado) {
         validateValue(slider, valorEsperado);
+        return this;
     }
 
-    public void validarEstadoInterruptor(boolean estadoEsperado) {
+    public ElementosBasicosPage validarEstadoInterruptor(boolean estadoEsperado) {
         String estadoString = estadoEsperado ? "true" : "false";
         validateAttribute(switchInterruptor, "aria-checked", estadoString);
+        return this;
     }
 }
