@@ -1,6 +1,6 @@
 # 🚀 QA Automation Framework - Web
 
-![Status da Pipeline](https://github.com/guilherme-evangelista/JavaWebExample/actions/workflows/pipeline-testes.yml/badge.svg)
+![Status da Pipeline](https://github.com/guilherme-evangelista/java-webtest-example/actions/workflows/pipeline-testes.yml/badge.svg)
 [![GitHub Pages](https://img.shields.io/badge/Relatório-Cucumber%20BDD-brightgreen?logo=cucumber)](https://guilherme-evangelista.github.io/java-webtest-example/)
 
 Projeto de automação de testes Web desenvolvido com foco em estabilidade, execução paralela e design patterns de mercado. Estruturado para testes contínuos (CI/CD) com geração de relatórios visuais avançados.
