@@ -17,7 +17,7 @@
         <selenium.version>4.19.1</selenium.version>
         <cucumber.version>7.16.1</cucumber.version>
         <testng.version>7.9.0</testng.version>
-        <datafaker.version>2.1.0</datafaker.version>
+        <datafaker.version>1.0.2</datafaker.version>
         <cluecumber.version>2.9.4</cluecumber.version>
     </properties>
 
@@ -46,8 +46,8 @@
         </dependency>
 
         <dependency>
-            <groupId>net.datafaker</groupId>
-            <artifactId>datafaker</artifactId>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
             <version>${datafaker.version}</version>
         </dependency>
     </dependencies>

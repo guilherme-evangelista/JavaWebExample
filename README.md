@@ -1,7 +1,7 @@
 # 🚀 QA Automation Framework - Web
 
 ![Status da Pipeline](https://github.com/guilherme-evangelista/JavaWebExample/actions/workflows/pipeline-testes.yml/badge.svg)
-**[📊 Acessar Relatório Executivo de Testes (Cluecumber)](https://guilherme-evangelista.github.io/JavaWebExample/)**
+[![GitHub Pages](https://img.shields.io/badge/Relatório-Cucumber%20BDD-brightgreen?logo=cucumber)](https://guilherme-evangelista.github.io/JavaWebExample/)
 
 Projeto de automação de testes Web desenvolvido com foco em estabilidade, execução paralela e design patterns de mercado. Estruturado para testes contínuos (CI/CD) com geração de relatórios visuais avançados.
 
@@ -51,7 +51,8 @@ Os testes rodam em modo *Headless* (sem interface gráfica) no servidor `ubuntu-
 src/
  ├── main/java/
  │    ├── factory/          # Setup de Browsers e ThreadLocal (DriverFactory)
- │    └── pages/            # BasePage (FluentWaits) e Classes de Página (@FindBy)
+ │    ├── pages/            # BasePage (FluentWaits) e Classes de Página (@FindBy)
+ |    └── utils/            # Utilitários (DataFaker, Report, Screenshot, etc)
  └── test/
       ├── java/
       │    ├── runner/      # RunTests (Configuração Cucumber + TestNG Paralelo)

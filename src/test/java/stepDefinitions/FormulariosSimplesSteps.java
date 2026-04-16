@@ -5,6 +5,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.And;
 import pages.FormulariosSimplesPage;
+import utils.DataFaker;
 
 public class FormulariosSimplesSteps {
 
@@ -17,20 +18,28 @@ public class FormulariosSimplesSteps {
 
     @When("preencho o formulário com dados válidos e aceito os termos")
     public void preencho_o_formulario_com_dados_validos_e_aceito_os_termos() {
-        FormulariosSimplesPage.actions().preencherCampoNome("John Doe")
-            .preencherCampoEmail("johndoe@example.com")
-            .preencherCampoSenha("Password123")
-            .preencherCampoConfirmarSenha("Password123")
+        String nome = DataFaker.getNome();
+        String email = DataFaker.getEmail();
+        String senha = DataFaker.getSenha();
+
+        FormulariosSimplesPage.actions().preencherCampoNome(nome)
+            .preencherCampoEmail(email)
+            .preencherCampoSenha(senha)
+            .preencherCampoConfirmarSenha(senha)
             .clicarCheckboxAceitoOsTermos()
             .takeScreenShot();
     }
 
     @When("preencho todos os campos de texto corretamente")
     public void preencho_todos_os_campos_de_texto_corretamente() {
-        FormulariosSimplesPage.actions().preencherCampoNome("John Doe")
-            .preencherCampoEmail("johndoe@example.com")
-            .preencherCampoSenha("Password123")
-            .preencherCampoConfirmarSenha("Password123")
+        String nome = DataFaker.getNome();
+        String email = DataFaker.getEmail();
+        String senha = DataFaker.getSenha();
+
+        FormulariosSimplesPage.actions().preencherCampoNome(nome)
+            .preencherCampoEmail(email)
+            .preencherCampoSenha(senha)
+            .preencherCampoConfirmarSenha(senha)
             .takeScreenShot();
     }
 
@@ -57,24 +66,28 @@ public class FormulariosSimplesSteps {
 
     @When("preencho o formulário exceto o campo {string}")
     public void preencho_o_formulario_exceto_o_campo(String campo) {
+        String nome = DataFaker.getNome();
+        String email = DataFaker.getEmail();
+        String senha = DataFaker.getSenha();
+
         if (!campo.equals("Nome")) {
             FormulariosSimplesPage.actions()
-                .preencherCampoNome("John Doe")
+                .preencherCampoNome(nome)
                 .takeScreenShot();
         }
         if (!campo.equals("Email")) {
             FormulariosSimplesPage.actions()
-                .preencherCampoEmail("johndoe@example.com")
+                .preencherCampoEmail(email)
                 .takeScreenShot();
         }
         if (!campo.equals("Senha")) {
             FormulariosSimplesPage.actions()
-                .preencherCampoSenha("Password123")
+                .preencherCampoSenha(senha)
                 .takeScreenShot();
         }
         if (!campo.equals("Confirmar Senha")) {
             FormulariosSimplesPage.actions()
-                .preencherCampoConfirmarSenha("Password123")
+                .preencherCampoConfirmarSenha(senha)
                 .takeScreenShot();
         }
     }

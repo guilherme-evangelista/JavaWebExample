@@ -21,8 +21,8 @@ Funcionalidade: QA Playground - Elementos Básicos
     Então valido que o campo de texto possui digitado "teste"
 
   Cenário: CT-04 - Interação com o dropdown customizado
-    Quando seleciono a opcao no dropdown de framework "robot"
-    Então valido que o dropdown de framework exibe a opcao "Robot Framework"
+    Quando seleciono a opcao no dropdown de framework "selenium"
+    Então valido que o dropdown de framework exibe a opcao "Selenium"
 
   Cenário: CT-05 - Interação com o slider de intervalo
     Quando altero o valor do slider para "80"
